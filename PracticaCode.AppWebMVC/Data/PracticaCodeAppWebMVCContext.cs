@@ -15,5 +15,6 @@ namespace PracticaCode.AppWebMVC.Data
         }
 
         public DbSet<PracticaCode.AppWebMVC.Models.Alumno> Alumno { get; set; } = default!;
+        public DbSet<PracticaCode.AppWebMVC.Models.Empleado> Empleado { get; set; } = default!;
     }
 }
