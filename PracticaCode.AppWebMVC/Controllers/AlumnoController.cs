@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using PracticaCode.AppWebMVC.Data;
 using PracticaCode.AppWebMVC.Models;
 
 namespace PracticaCode.AppWebMVC.Controllers
 {
     public class AlumnoController : Controller
     {
-        private readonly PracticaCodeAppWebMVCContext _context;
+        private readonly AlumnosDbContext _context;
 
-        public AlumnoController(PracticaCodeAppWebMVCContext context)
+        public AlumnoController(AlumnosDbContext context)
         {
             _context = context;
         }
@@ -22,7 +21,7 @@ namespace PracticaCode.AppWebMVC.Controllers
         // GET: Alumno
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Alumno.ToListAsync());
+            return View(await _context.Alumnos.ToListAsync());
         }
 
         // GET: Alumno/Details/5
@@ -33,7 +32,7 @@ namespace PracticaCode.AppWebMVC.Controllers
                 return NotFound();
             }
 
-            var alumno = await _context.Alumno
+            var alumno = await _context.Alumnos
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (alumno == null)
             {
@@ -73,7 +72,7 @@ namespace PracticaCode.AppWebMVC.Controllers
                 return NotFound();
             }
 
-            var alumno = await _context.Alumno.FindAsync(id);
+            var alumno = await _context.Alumnos.FindAsync(id);
             if (alumno == null)
             {
                 return NotFound();
@@ -124,7 +123,7 @@ namespace PracticaCode.AppWebMVC.Controllers
                 return NotFound();
             }
 
-            var alumno = await _context.Alumno
+            var alumno = await _context.Alumnos
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (alumno == null)
             {
@@ -139,10 +138,10 @@ namespace PracticaCode.AppWebMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var alumno = await _context.Alumno.FindAsync(id);
+            var alumno = await _context.Alumnos.FindAsync(id);
             if (alumno != null)
             {
-                _context.Alumno.Remove(alumno);
+                _context.Alumnos.Remove(alumno);
             }
 
             await _context.SaveChangesAsync();
@@ -151,7 +150,7 @@ namespace PracticaCode.AppWebMVC.Controllers
 
         private bool AlumnoExists(int id)
         {
-            return _context.Alumno.Any(e => e.Id == id);
+            return _context.Alumnos.Any(e => e.Id == id);
         }
     }
 }

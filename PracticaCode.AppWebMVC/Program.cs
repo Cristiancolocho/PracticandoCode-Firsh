@@ -4,8 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using PracticaCode.AppWebMVC.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<PracticaCodeAppWebMVCContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("PracticaCodeAppWebMVCContext") ?? throw new InvalidOperationException("Connection string 'PracticaCodeAppWebMVCContext' not found.")));
 
 builder.Services.AddDbContext<AlumnosDbContext>(options =>
 {
