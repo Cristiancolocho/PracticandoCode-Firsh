@@ -28,6 +28,23 @@ namespace PracticaCode.AppWebMVC.Migrations
                 {
                     table.PrimaryKey("PK_Alumnos", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Empleados",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DUI = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Empleados", x => x.Id);
+                });
         }
 
         /// <inheritdoc />
@@ -35,6 +52,9 @@ namespace PracticaCode.AppWebMVC.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Alumnos");
+
+            migrationBuilder.DropTable(
+                name: "Empleados");
         }
     }
 }
