@@ -1,4 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using PracticaCode.AppWebMVC.Models;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<AlumnosDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Conn"));
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
